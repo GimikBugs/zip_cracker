@@ -15,20 +15,20 @@ def extract_zip(filename, password):
 
 
 def Main():
-    parser = optparse.OptionParser("usage & prog " + "-f <zipfile> -d <dictionary>")
+    parser = optparse.OptionParser("Usage: -f <zipfile> -d <dictionary>")
 
-    parser.add_option('-f', dest='zname', type='string', help='specify zip file')
-    parser.add_option('-d', dest='dname', type='string', help='specify dictionary file')
+    parser.add_option('-f', dest='zip_file', type='string', help='specify the zip file')
+    parser.add_option('-d', dest='dictionary', type='string', help='specify the dictionary file')
     (options, arg) = parser.parse_args()
-    if (options.zname == None) | (options.dname == None):
+    if (options.zip_file == None) | (options.dictionary == None):
         print(parser.usage)
         exit(0)
     else:
-        zname = options.zname
-        dname = options.dname
+        zip_file = options.zip_file
+        dictionary = options.ditionary
 
-    zFile = zipfile.ZipFile(zname)
-    passFile = open(dname)
+    zFile = zipfile.ZipFile(zip_file)
+    passFile = open(dictionary)
 
     for line in passFile.readlines():
         password = line.strip('\n')
